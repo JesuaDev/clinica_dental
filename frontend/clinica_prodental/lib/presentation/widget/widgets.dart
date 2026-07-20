@@ -1,0 +1,14 @@
+export 'package:clinica_prodental/presentation/widget/shared/load_data/message_empty_data.dart';
+export 'package:clinica_prodental/presentation/widget/shared/header/content_filters_register.dart';
+export 'package:clinica_prodental/presentation/widget/shared/inputs/segmented_layout.dart';
+export 'package:clinica_prodental/presentation/widget/shared/header/content_header.dart';
+export 'package:clinica_prodental/presentation/widget/shared/paginations/pagination.dart';
+export 'package:clinica_prodental/presentation/widget/shared/notifications/toats.dart';
+export 'package:clinica_prodental/presentation/widget/shared/header/container_title.dart';
+export 'package:clinica_prodental/presentation/widget/shared/inputs/text_input.dart';
+export 'package:clinica_prodental/presentation/widget/shared/inputs/drop_down.dart';
+export 'package:clinica_prodental/presentation/widget/shared/inputs/input_search.dart';
+export 'package:clinica_prodental/presentation/widget/shared/notifications/view_dialog.dart';
+export 'package:clinica_prodental/presentation/widget/shared/header/custom_app_bar.dart';
+export 'package:clinica_prodental/presentation/widget/shared/header/log_letter.dart';
+export 'package:clinica_prodental/presentation/widget/reminders/calender_task.dart';
