@@ -1,0 +1,67 @@
+
+# MISCELÁNEOS Y EDITORES (Globales)
+
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+*.iml
+*.ipr
+*.iws
+.idea/
+.vscode/
+
+
+# BACKEND (Node.js / Express)
+
+backend/node_modules/
+backend/npm-debug.log*
+backend/logs/
+backend/.env.local
+backend/.env.production
+backend/dist/
+backend/build/
+
+
+# FRONTEND
+
+frontend/clinica_prodental/.env.local
+frontend/clinica_prodental/.env.production
+frontend/clinica_prodental/.dart_tool/
+frontend/clinica_prodental/.flutter-plugins
+frontend/clinica_prodental/.flutter-plugins-dependencies
+frontend/clinica_prodental/.packages
+frontend/clinica_prodental/.pub-cache/
+frontend/clinica_prodental/.pub/
+
+# Reglas de Flutter corregidas para la subcarpeta
+**/doc/api/
+**/ios/Flutter/.last_build_id
+frontend/clinica_prodental/build/
+frontend/clinica_prodental/coverage/
+
+# Símbolos y Ofuscación
+frontend/clinica_prodental/app.*.symbols
+frontend/clinica_prodental/app.*.map.json
+
+# Artefactos de Android Studio
+frontend/clinica_prodental/android/app/debug
+frontend/clinica_prodental/android/app/profile
+frontend/clinica_prodental/android/app/release
+frontend/clinica_prodental/android/.gradle/
+frontend/clinica_prodental/android/local.properties
+
+# Artefactos de iOS / Pods
+frontend/clinica_prodental/ios/.generated/
+frontend/clinica_prodental/ios/Flutter/Flutter.podspec
+frontend/clinica_prodental/ios/Flutter/Generated.xcconfig
+frontend/clinica_prodental/ios/Flutter/flutter_export_environment.sh
+frontend/clinica_prodental/ios/Pods/
