@@ -18,7 +18,7 @@ class PxDatasourceImpl extends PxDatasource {
   @override
   Future<ResponseApi<List<PxEntity>>> getPatients({int page = 1}) async {
     try {
-      debugPrint(page.toString());
+     
       final patients = await dio.get(
         '/patients',
         queryParameters: {"page": page},
@@ -77,6 +77,41 @@ class PxDatasourceImpl extends PxDatasource {
         statusCode: statusCode,
         message: message ?? "Sin mensaje...",
         data: patientParse,
+      );
+    } on DioException catch (e) {
+      throw ErrorEntity(
+        status: e.response?.statusCode,
+        message: e.response?.data['message'],
+        details: e.response?.data['details'] ?? 'No hay detalles del error',
+      );
+    } catch (err, stack) {
+      debugPrint("$err y $stack");
+      rethrow;
+    }
+  }
+  
+  @override
+  Future<ResponseApi<List<PxEntity>>> searchPx(String value) async {
+    try {
+      final search = await dio.get(
+        '/patient/search',
+        queryParameters: {"search": value},
+      );
+
+      final int? statusCode = search.statusCode;
+      final String message = search.data["message"];
+      final List listSearch = search.data["data"];
+
+      final List<PxEntity> listPatientsParse = listSearch
+          .map(
+            (patient) => PxMapper.pxToEntity(PxModelResponse.fromJson(patient)),
+          )
+          .toList();
+
+      return ResponseApi(
+        statusCode: statusCode,
+        message: message,
+        data: listPatientsParse,
       );
     } on DioException catch (e) {
       throw ErrorEntity(

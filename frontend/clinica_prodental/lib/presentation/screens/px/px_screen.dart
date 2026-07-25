@@ -1,14 +1,13 @@
 import 'dart:math';
-import 'package:animate_do/animate_do.dart';
-import 'package:clinica_prodental/presentation/screens/citas/citas_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
+import 'package:animate_do/animate_do.dart';
 import 'package:clinica_prodental/domain/entities/entities.dart';
 import 'package:clinica_prodental/presentation/providers/features/px/data/patient/px_provider.dart';
 import 'package:clinica_prodental/presentation/screens/px/px_details_screen.dart';
-import 'package:clinica_prodental/presentation/screens/px/dialog/view_dialog_form_px.dart';
-
+import 'package:clinica_prodental/presentation/shared/dialogs/view_dialog_form_px.dart';
+//TODO : ORGANIZAR 
 import 'package:hugeicons/hugeicons.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -121,7 +120,7 @@ class _ContentPxState extends ConsumerState<_ContentPx> {
                                 color: colorTheme,
                                 dataDropDown: dataDropDown,
                                 onOpenDialog: (BuildContext context) {
-                                  ViewDialogFormPx.showDialogFormPx(context);
+                                  ViewDialogForm.showDialogFormPx(context);
                                 },
                                 titleButton: 'Paciente',
                                 hintText: 'Buscar paciente...',
@@ -606,96 +605,6 @@ class ContentAction extends StatelessWidget {
   }
 }
 
-class ActionButtonMore extends StatefulWidget {
-  const ActionButtonMore({super.key, required this.colorTheme});
-
-  final ColorScheme colorTheme;
-
-  @override
-  State<ActionButtonMore> createState() => _ActionButtonMoreState();
-}
-
-class _ActionButtonMoreState extends State<ActionButtonMore> {
-  bool isHover = false;
-
-  @override
-  Widget build(BuildContext context) {
-    final TextStyle styleItemsText = TextStyle(
-      fontSize: 17,
-      fontWeight: FontWeight.w200,
-      color: widget.colorTheme.onSecondary.withValues(alpha: .7),
-      letterSpacing: 1,
-    );
-
-    return PopupMenuButton<ActionsRegisters>(
-      surfaceTintColor: Colors.transparent,
-      splashRadius: 0,
-      tooltip: "",
-      style: ButtonStyle(
-        overlayColor: WidgetStatePropertyAll(Colors.transparent),
-        splashFactory: NoSplash.splashFactory,
-      ),
-
-      onSelected: (value) {
-        switch (value) {
-          case ActionsRegisters.details:
-            break;
-          case ActionsRegisters.update:
-            break;
-          case ActionsRegisters.delete:
-            break;
-        }
-      },
-      itemBuilder: (context) => [
-        PopupMenuItem(
-          value: ActionsRegisters.details,
-          child: Row(
-            children: [
-              HugeIcon(icon: HugeIcons.strokeRoundedProfile),
-              SizedBox(width: 8),
-              Text("Ver detalles", style: styleItemsText),
-            ],
-          ),
-        ),
-        PopupMenuItem(
-          value: ActionsRegisters.update,
-          child: Row(
-            children: [
-              HugeIcon(icon: HugeIcons.strokeRoundedEdit01),
-              SizedBox(width: 8),
-              Text("Actualizar", style: styleItemsText),
-            ],
-          ),
-        ),
-        PopupMenuItem(
-          value: ActionsRegisters.delete,
-          child: Row(
-            children: [
-              HugeIcon(icon: HugeIcons.strokeRoundedDelete01),
-              SizedBox(width: 8),
-              Text("Eliminar", style: styleItemsText),
-            ],
-          ),
-        ),
-      ],
-      child: MouseRegion(
-        cursor: SystemMouseCursors.click,
-        onEnter: (_) => setState(() {
-          isHover = true;
-        }),
-        onExit: (_) => setState(() {
-          isHover = false;
-        }),
-
-        child: ButtonAction(
-          color: widget.colorTheme,
-          onTapButton: () {},
-          icon: HugeIcons.strokeRoundedCalendar01,
-        )
-      ),
-    );
-  }
-}
 
 class AvatarPx extends StatelessWidget {
   const AvatarPx({super.key, required this.indexRandom, required this.patient});

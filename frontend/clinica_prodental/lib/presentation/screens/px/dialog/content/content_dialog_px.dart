@@ -86,7 +86,11 @@ class _ContentDialogPxState extends ConsumerState<ContentDialogPx> {
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
-                          ContentHeaderDialog(),
+                          ContentHeaderForm(
+                            title: "Crear paciente",
+                            subTitle:
+                                'Registra un nuevo paciente en el sistema.',
+                          ),
                           ContentBodyDialog(
                             textLabels: textLabels,
                             color: color,
@@ -1818,66 +1822,6 @@ class ContentInputsText extends StatelessWidget {
   }
 }
 
-class ContentHeaderDialog extends StatefulWidget {
-  const ContentHeaderDialog({super.key});
-
-  @override
-  State<ContentHeaderDialog> createState() => _ContentHeaderDialogState();
-}
-
-class _ContentHeaderDialogState extends State<ContentHeaderDialog> {
-  bool isHover = false;
-
-  @override
-  Widget build(BuildContext context) {
-    final ColorScheme color = Theme.of(context).colorScheme;
-    final childIcon = HugeIcon(
-      icon: HugeIcons.strokeRoundedCancel01,
-      color: isHover ? Colors.white70 : color.onSecondary,
-    );
-
-    return Row(
-      children: [
-        Text(
-          "Crear Paciente",
-          style: TextStyle(
-            fontSize: 23,
-            letterSpacing: 0,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-
-        Spacer(),
-
-        GestureDetector(
-          onTap: () => context.pop(),
-          child: MouseRegion(
-            cursor: SystemMouseCursors.click,
-            onEnter: (event) => setState(() {
-              isHover = true;
-            }),
-            onExit: (event) => setState(() {
-              isHover = false;
-            }),
-            child: AnimatedContainer(
-              duration: Duration(milliseconds: 600),
-              padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  width: 1,
-                  color: color.onSecondary.withValues(alpha: .15),
-                ),
-                borderRadius: BorderRadius.circular(15),
-                color: isHover ? Colors.red : Colors.transparent,
-              ),
-              child: isHover ? Spin(child: childIcon) : childIcon,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
 
 /*   Row(
                         children: List.generate(2, (index) {

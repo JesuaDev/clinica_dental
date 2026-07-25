@@ -1,3 +1,6 @@
+export 'package:clinica_prodental/presentation/widget/shared/header/content_header_form.dart';
+export 'package:clinica_prodental/presentation/widget/shared/buttons/action_button_more.dart';
+export 'package:clinica_prodental/presentation/widget/shared/buttons/button_action.dart';
 export 'package:clinica_prodental/presentation/widget/shared/load_data/message_empty_data.dart';
 export 'package:clinica_prodental/presentation/widget/shared/header/content_filters_register.dart';
 export 'package:clinica_prodental/presentation/widget/shared/inputs/segmented_layout.dart';

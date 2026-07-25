@@ -19,4 +19,9 @@ class PxRepositoryImpl extends PxRepository {
   Future<ResponseApi<PxEntity>> postPatients(PatientDtos dtos) {
     return datasource.postPatients(dtos);
   }
+
+  @override
+  Future<ResponseApi<List<PxEntity>>> searchPx(String value) {
+    return datasource.searchPx(value);
+  }
 }

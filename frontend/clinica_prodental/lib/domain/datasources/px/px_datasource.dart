@@ -4,6 +4,6 @@ import 'package:clinica_prodental/infraestructure/dtos/px/patient/patient_dtos.d
 
 abstract class PxDatasource {
   Future<ResponseApi<List<PxEntity>>> getPatients({int page = 1});
-
   Future<ResponseApi<PxEntity>> postPatients(PatientDtos dtos);
+  Future<ResponseApi<List<PxEntity>>> searchPx(String value);
 }

@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:clinica_prodental/presentation/providers/features/px/data/patient/cita_provider.dart';
+import 'package:clinica_prodental/presentation/providers/features/px/data/patient/citas/cita_provider.dart';
 import 'package:clinica_prodental/presentation/providers/features/px/data/state/patient/citas/appoitments_state.dart';
 
 final appointmentsCount = Provider<AppoitmentsState>((ref) {

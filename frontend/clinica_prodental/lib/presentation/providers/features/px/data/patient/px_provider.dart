@@ -85,4 +85,37 @@ class PxNotifier extends Notifier<PxState> {
       );
     }
   }
+
+  Future<void> searchPx(String value) async {
+    try {
+      const Duration minLoadingTime = Duration(milliseconds: 800);
+      state = state.copyWith(isLoading: true, error: null);
+
+      final DateTime start = DateTime.now();
+
+      final repository = ref.read(pxRepositoryImplProvider);
+      final response = await repository.searchPx(value);
+
+      final Duration elapsed = DateTime.now().difference(start);
+      if (elapsed < minLoadingTime) {
+        await Future.delayed(minLoadingTime - elapsed);
+      }
+      state = state.copyWith(
+        isLoading: false,
+        search: response.data,
+        message: response.message,
+      );
+    } on ErrorEntity catch (err) {
+      state = state.copyWith(isLoading: false, error: err);
+    } catch (err) {
+      state = state.copyWith(
+        isLoading: false,
+        error: ErrorEntity(
+          status: 500,
+          message: 'Error desconocido',
+          details: '',
+        ),
+      );
+    }
+  }
 }

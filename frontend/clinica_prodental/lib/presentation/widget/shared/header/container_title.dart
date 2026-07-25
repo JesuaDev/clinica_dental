@@ -4,13 +4,13 @@ import 'package:hugeicons/hugeicons.dart';
 class ContainerTitle extends StatelessWidget {
   const ContainerTitle({
     super.key,
-
     required this.styleLabel,
     this.icon,
     required this.color,
     this.radius = 50,
     required this.title,
-    required this.subTitle,
+    this.subTitle,
+    this.fontSize = 17,
   });
 
   final TextStyle styleLabel;
@@ -18,7 +18,8 @@ class ContainerTitle extends StatelessWidget {
   final Color color;
   final double radius;
   final String title;
-  final String subTitle;
+  final String? subTitle;
+  final double fontSize; 
   @override
   Widget build(BuildContext context) {
     final ColorScheme colorTheme = Theme.of(context).colorScheme;
@@ -30,13 +31,16 @@ class ContainerTitle extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(title, style: styleLabel.copyWith(fontSize: 17)),
+            Text(title, style: styleLabel.copyWith(fontSize: fontSize)),
+            subTitle != null
+                ? 
             Text(
-              subTitle,
+                    subTitle!,
               style: TextStyle(
                 color: colorTheme.onSecondary.withValues(alpha: .4),
               ),
-            ),
+                  )
+                : SizedBox.shrink()
           ],
         ),
       ],

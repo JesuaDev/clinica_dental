@@ -6,7 +6,7 @@ exports.getPatients = async (req, res) => {
         //const offset = req.query.offset; 
         const limit = parseInt(req.query.limit) || 20;
         const offset = (page - 1) * limit;
- 
+
         const query = `SELECT
             p.id_px,
             p.full_name,
@@ -25,7 +25,7 @@ exports.getPatients = async (req, res) => {
         )  c ON p.id_px = c.id_px
         ORDER BY p.id_px DESC
         LIMIT $1 OFFSET $2;`;
-   
+
 
         const queryCount = `
 
@@ -33,8 +33,8 @@ exports.getPatients = async (req, res) => {
         
         `;
 
-        const[patient, count] = await Promise.all([
-            pool.query(query,[limit,offset]),
+        const [patient, count] = await Promise.all([
+            pool.query(query, [limit, offset]),
             pool.query(queryCount)
         ]);
 
@@ -42,15 +42,17 @@ exports.getPatients = async (req, res) => {
         const total = Number(count.rows[0].total);
 
 
-        return res.status(200).json({ status: 200, message: "Datos consultados correctamente", data: patient.rows, pagination: {
-            page,
-            limit,
-            total,
-            totalPages: Math.ceil(total / limit),
-            hasNext: page *limit < total, 
-            hasPrevius: page > 1 
+        return res.status(200).json({
+            status: 200, message: "Datos consultados correctamente", data: patient.rows, pagination: {
+                page,
+                limit,
+                total,
+                totalPages: Math.ceil(total / limit),
+                hasNext: page * limit < total,
+                hasPrevius: page > 1
 
-        } });
+            }
+        });
     } catch (error) {
         return res.status(500).json({ status: 500, message: `Hubo un error interno: ${error}` });
     }
@@ -60,7 +62,7 @@ exports.getPatients = async (req, res) => {
 
 exports.postPatients = async (req, res) => {
     try {
-        console.log(req.boy);
+
         const { name_px, last_name_px, sex_px, birthdate_px, phone_px, direction_px, allergys_px, medication_px, diseases_px, medical_record_px } = req.body;
         const full_name = `${name_px} ${last_name_px}`;
 
@@ -106,6 +108,43 @@ exports.postPatients = async (req, res) => {
 
 }
 
+
+exports.searchPx = async (req, res) => {
+    try {
+        let search = req.query.search;
+
+        const querySearch = `SELECT
+            p.id_px,
+            p.full_name,
+            p.birthdate_px,
+            p.sex_px,
+            p.phone_px,
+            p.direction_px,
+            c.fecha_cita 
+        FROM px p
+        lEFT JOIN (
+                SELECT 
+                id_px, 
+            MAX(fecha_cita) AS fecha_cita
+            FROM citas
+        GROUP BY id_px
+        )  c ON p.id_px = c.id_px 
+          WHERE p.id_px::TEXT ILIKE $1 OR 
+          p.full_name ILIKE $1 OR 
+          p.phone_px ILIKE $1 ORDER BY p.full_name;                       
+    `;
+
+        const resultSearch = await pool.query(querySearch, [`%${search}%`]);
+
+        res.status(200).json({ status: 200, message: "Paciente encontrado", data: search.length === 0 ? [] : resultSearch.rows });
+
+    }
+    catch (error) {
+        return res.status(500).json({ status: 500, message: `Hubo un error interno: ${error}` });
+    }
+
+
+}
 /* exports.updatePatient = async (req, res) =>{
     const {name_px, last_name_px, sex_px, birthdate_px, phone_px, direction_px, allergys_px, medication_px, diseases_px, medical_record_px} = req.body; 
     const id_px = req.params.id; 

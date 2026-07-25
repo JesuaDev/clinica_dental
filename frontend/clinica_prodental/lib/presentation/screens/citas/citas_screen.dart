@@ -1,7 +1,8 @@
 //?Framework Imports
 import 'dart:math';
-import 'package:clinica_prodental/presentation/providers/features/px/data/patient/citas_count_provider.dart';
+import 'package:clinica_prodental/presentation/providers/features/px/data/patient/citas/citas_count_provider.dart';
 import 'package:clinica_prodental/presentation/providers/features/px/data/state/patient/citas/appoitments_state.dart';
+import 'package:clinica_prodental/presentation/shared/dialogs/view_dialog_form_px.dart';
 import 'package:flutter/material.dart';
 
 //?External Imports
@@ -10,15 +11,14 @@ import 'package:hugeicons/hugeicons.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
+//?Internal Imports
 import 'package:clinica_prodental/core/theme/app_colors.dart';
 import 'package:clinica_prodental/domain/entities/entities.dart';
 import 'package:clinica_prodental/presentation/shared/shared.dart';
 import 'package:clinica_prodental/presentation/widget/widgets.dart';
 import 'package:clinica_prodental/helpers/format/date/hour_formater.dart';
-import 'package:clinica_prodental/presentation/screens/px/px_screen.dart';
 import 'package:clinica_prodental/presentation/providers/custom/preferences/type_layout_provider.dart';
-import 'package:clinica_prodental/presentation/providers/features/px/data/patient/cita_provider.dart';
+import 'package:clinica_prodental/presentation/providers/features/px/data/patient/citas/cita_provider.dart';
 import 'package:clinica_prodental/presentation/providers/features/px/data/state/patient/citas/cita_state.dart';
 
 class CitasScreen extends StatelessWidget {
@@ -115,7 +115,9 @@ class _ContentCitaState extends ConsumerState<ContentCita> {
                         ContentFiltersRegister(
                           color: color,
                           dataDropDown: [],
-                          onOpenDialog: (context) {},
+                          onOpenDialog: (context) {
+                            ViewDialogForm.showDialogFormCitas(context);
+                          },
                           titleButton: 'Cita',
                           hintText: 'Buscar cita...(Id)',
                         ),
@@ -423,123 +425,69 @@ class ContentCardCita extends StatelessWidget {
     return FadeInDown(
       duration: const Duration(milliseconds: 350),
       delay: Duration(milliseconds: index * 50),
-      child: Expanded(
-        child: Container(
-          height: heightCard,
-          padding: EdgeInsets.only(top: 15, bottom: 15, right: 10),
-
-          margin: EdgeInsets.only(bottom: 10),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            border: Border.all(
-              width: 2,
-              color: color.onSecondary.withValues(alpha: .05),
-            ),
-          ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                width: 2,
-                height: heightCard,
-                decoration: BoxDecoration(color: AppColors.colors[indexRandom]),
-              ),
-              SizedBox(width: 10),
-
-              DateHourCita(
-                cita: cita,
-                date: cita.dateCita,
-                hour: cita.hourCita,
-                color: color,
-              ),
-
-              SizedBox(width: 40),
-              AvatarCita(indexRandom: indexRandom, cita: cita),
-
-              SizedBox(width: 20),
-
-              ContentBasicInformationPx(
-                age: age,
-                color: color,
-                sex: cita.px!.sexPx!,
-                shortName:
-                    "${shortName.first} ${shortName[shortName.length - 2]} (PX${cita.px!.idPx})",
-                idPx: cita.px!.idPx,
-                phone: "+504 ${cita.px!.phone}",
-                colorSubtitle: color.onSecondary.withValues(alpha: .6),
-              ),
-
-              SizedBox(width: 80),
-              Container(
-                width: 1,
-                height: heightCard,
-                color: color.onSecondary.withValues(alpha: .12),
-              ),
-              SizedBox(width: 40),
-              ContentInformationCita(cita: cita, color: color),
-              SizedBox(width: 40),
-              ActionButtonMore(colorTheme: color),
-              SizedBox(width: 10),
-              ButtonAction(
-                color: color,
-                onTapButton: () {},
-                icon: HugeIcons.strokeRoundedMoreHorizontal,
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class ButtonAction extends StatefulWidget {
-  const ButtonAction({
-    super.key,
-    required this.color,
-    this.icon,
-    required this.onTapButton,
-  });
-
-  final ColorScheme color;
-  final dynamic icon;
-  final VoidCallback onTapButton;
-
-  @override
-  State<ButtonAction> createState() => _ButtonActionState();
-}
-
-class _ButtonActionState extends State<ButtonAction> {
-  bool isHover = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: widget.onTapButton,
-      onHover: (hover) {
-        setState(() {
-          isHover = hover;
-        });
-      },
-      mouseCursor: SystemMouseCursors.click,
-
       child: Container(
-        padding: EdgeInsets.all(8),
+        height: heightCard,
+        padding: EdgeInsets.only(top: 15, bottom: 15, right: 10),
+
+        margin: EdgeInsets.only(bottom: 10),
         decoration: BoxDecoration(
-          border: Border.all(
-            color: isHover
-                ? Colors.transparent
-                : widget.color.onSecondary.withValues(alpha: .2),
-          ),
-          color: isHover ? widget.color.primary : Colors.transparent,
           borderRadius: BorderRadius.circular(15),
+          border: Border.all(
+            width: 2,
+            color: color.onSecondary.withValues(alpha: .05),
+          ),
         ),
-        child: HugeIcon(
-          icon: widget.icon,
-          size: 25,
-          color: isHover
-              ? Colors.white70
-              : widget.color.onSecondary.withValues(alpha: .7),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              width: 2,
+              height: heightCard,
+              decoration: BoxDecoration(color: AppColors.colors[indexRandom]),
+            ),
+            SizedBox(width: 10),
+
+            DateHourCita(
+              cita: cita,
+              date: cita.dateCita,
+              hour: cita.hourCita,
+              color: color,
+            ),
+
+            SizedBox(width: 40),
+            AvatarCita(indexRandom: indexRandom, cita: cita),
+
+            SizedBox(width: 20),
+
+            ContentBasicInformationPx(
+              age: age,
+              color: color,
+              sex: cita.px!.sexPx!,
+              shortName:
+                  "${shortName.first} ${shortName[shortName.length - 2]} (PX${cita.px!.idPx})",
+              idPx: cita.px!.idPx,
+              phone: "+504 ${cita.px!.phone}",
+              colorSubtitle: color.onSecondary.withValues(alpha: .6),
+            ),
+
+            SizedBox(width: 80),
+            Container(
+              width: 1,
+              height: heightCard,
+              color: color.onSecondary.withValues(alpha: .12),
+            ),
+            SizedBox(width: 40),
+            ContentInformationCita(cita: cita, color: color),
+            SizedBox(width: 40),
+      
+            ButtonAction(
+              color: color,
+              onTapButton: () {},
+              icon: HugeIcons.strokeRoundedCalendar01,
+            ),
+            SizedBox(width: 10),
+            ActionButtonMore(colorTheme: color),
+          ],
         ),
       ),
     );

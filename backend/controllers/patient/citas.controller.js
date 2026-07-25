@@ -23,7 +23,7 @@ exports.getCitas = async (req, res) => {
             p.sex_px,
             p.birthdate_px
         FROM citas c INNER JOIN px p ON c.id_px = p.id_px
-        ORDER BY id_cita DESC
+        ORDER BY c.id_cita DESC
         LIMIT $1 OFFSET $2;`;
 
 

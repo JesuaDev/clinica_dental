@@ -3,6 +3,7 @@ import 'package:clinica_prodental/domain/entities/entities.dart';
 class PxState {
   final bool? isLoading;
   final List<PxEntity>? data;
+  final List<PxEntity>? search;
   final String? message;
   final ErrorEntity? error;
   final PaginationEntity? pagination;
@@ -13,11 +14,13 @@ class PxState {
     this.error,
     this.isLoading = false,
     this.pagination,
+    this.search = const [],
   });
 
   PxState copyWith({
     bool? isLoading = false,
     List<PxEntity>? data,
+    List<PxEntity>? search,
     String? message,
     ErrorEntity? error,
     PaginationEntity? pagination,
@@ -28,6 +31,7 @@ class PxState {
       message: message,
       error: error,
       pagination: pagination,
+      search: search ?? this.search
     );
   }
 }
