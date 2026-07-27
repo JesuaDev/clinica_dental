@@ -14,7 +14,6 @@ import 'package:clinica_prodental/presentation/screens/px/dialog/content/content
 import 'package:intl/intl.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:go_router/go_router.dart';
-import 'package:animate_do/animate_do.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:phone_number_controller/phone_number_controller.dart';
@@ -308,7 +307,7 @@ class _ContentBodyDialogState extends ConsumerState<ContentBodyDialog> {
                 onchangedSex: notifier.updateSexPx,
                 sexPx: widget.pxDataInput.sex,
                 onchagedBirthdate: notifier.updateBirthday,
-                dateBirthdate: widget.pxDataInput.birthday,
+                dateBirthdate: widget.pxDataInput.birthday.toString(),
                 onchagedPhone: notifier.updatePhone,
                 phone: widget.pxDataInput.phone,
               ),
@@ -1432,8 +1431,8 @@ class _ContentDirectionPxState extends State<ContentDirectionPx> {
 class ContentPersonalData extends StatefulWidget {
   final String? sexPx;
   final ValueChanged<String> onchangedSex;
-  final DateTime? dateBirthdate;
-  final ValueChanged<DateTime> onchagedBirthdate;
+  final String? dateBirthdate;
+  final ValueChanged<String> onchagedBirthdate;
   final String? phone;
   final ValueChanged<String> onchagedPhone;
 
@@ -1542,8 +1541,8 @@ class ContentPhonePx extends StatelessWidget {
 class ContentBirthdatePx extends ConsumerStatefulWidget {
   final TextStyle textLabels;
   final ColorScheme color;
-  final DateTime? birthdatePx;
-  final ValueChanged<DateTime> onChangedBirthdate;
+  final String? birthdatePx;
+  final ValueChanged<String> onChangedBirthdate;
 
   const ContentBirthdatePx({
     super.key,
@@ -1584,7 +1583,7 @@ class _ContentBirthdatePxState extends ConsumerState<ContentBirthdatePx> {
           onTap: () async {
             final date = await viewCalendar();
             if (date != null && selectDate.birthday != date) {
-              widget.onChangedBirthdate(date);
+              widget.onChangedBirthdate(date.toIso8601String());
             }
           },
 
@@ -1604,7 +1603,7 @@ class _ContentBirthdatePxState extends ConsumerState<ContentBirthdatePx> {
                   SizedBox(width: 15),
                   Text(
                     selectDate.birthday != null
-                        ? DateFormat('dd/MM/yyyy').format(widget.birthdatePx!)
+                        ? widget.birthdatePx!
                         : "Seleccionar Fecha",
                     style: TextStyle(fontSize: 16),
                   ),

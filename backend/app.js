@@ -10,13 +10,13 @@ const PORT = process.env.PORT;
 //*? Rutas : Users
 const userRouter = require('./routes/users/users.router');
 const loginRouter = require('./routes/users/login.router');
-const calendarRouter = require('./routes/users/calendar.router');
+const calendarRouter = require('./routes/appointments/reminders_appointment.router');
 //? Rutas : Patients
 const pxRouter = require('./routes/patient/px.router');
-const allergysRouter = require('./routes/patient/allergys.router');
-const medicationRouter = require('./routes/patient/medications.router'); 
-const diseasesRouter = require('./routes/patient/diseases.router'); 
-const citasRouter = require('./routes/patient/citas.router'); 
+const allergysRouter = require('./routes/patient/details/allergys.router');
+const medicationRouter = require('./routes/patient/details/medications.router'); 
+const diseasesRouter = require('./routes/patient/details/diseases.router'); 
+const citasRouter = require('./routes/appointments/medical_appointment.router'); 
 
 app.use(express.json());
 app.use(cors({

@@ -1,8 +1,8 @@
-import 'package:clinica_prodental/domain/entities/entities.dart';
-import 'package:clinica_prodental/presentation/providers/features/px/data/state/patient/px_dental_record_form.dart';
-import 'package:clinica_prodental/presentation/providers/features/px/data/state/patient/px_form_state.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:clinica_prodental/domain/entities/entities.dart';
+import 'package:clinica_prodental/presentation/providers/features/px/data/state/patient/px_form_state.dart';
+import 'package:clinica_prodental/presentation/providers/features/px/data/state/patient/px_dental_record_form.dart';
 
 final addDataPxInput = NotifierProvider<AddDataNotifier, PxFormState>(
   AddDataNotifier.new,
@@ -15,6 +15,7 @@ class AddDataNotifier extends Notifier<PxFormState> {
   void clearForm() => PxFormState();
 
   void updateNamesPx(String value) {
+    debugPrint(value); 
     state = state.copyWith(names: value);
   }
 
@@ -23,12 +24,10 @@ class AddDataNotifier extends Notifier<PxFormState> {
   }
 
   void updateSexPx(String value) {
-    debugPrint(value);
     state = state.copyWith(sex: value);
   }
 
-  void updateBirthday(DateTime value) {
-    debugPrint("$value");
+  void updateBirthday(String value) {
     state = state.copyWith(birthday: value);
   }
 

@@ -156,12 +156,14 @@ class _ContentPxState extends ConsumerState<_ContentPx> {
                                       );
                                       //? Calcular que edad tiene el px
                                       final int age =
+                                          patient.birthdatePx != null &&
+                                              patient.birthdatePx!.contains('-')
+                                          ?
                                           DateTime.now().year -
-                                          (patient.birthdatePx != null
-                                              ? DateTime.parse(
-                                                  "${patient.birthdatePx!}",
+                                                DateTime.parse(
+                                                  patient.birthdatePx!,
                                                 ).year
-                                              : DateTime.now().year);
+                                          : int.parse(patient.birthdatePx!); 
 
                                       return ContentGridCards(
                                         colorTheme: colorTheme,
@@ -253,7 +255,7 @@ class _ContentPxState extends ConsumerState<_ContentPx> {
 
                                                   CellTable(
                                                     content:
-                                                        "${(DateTime.now().year - patient.birthdatePx!.year)} años",
+                                                        "${patient.birthdatePx} años",
                                                     flex: 1,
                                                     isHeader: false,
                                                   ),

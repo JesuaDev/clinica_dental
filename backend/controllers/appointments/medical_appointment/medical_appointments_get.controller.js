@@ -1,4 +1,7 @@
-const pool = require('../../config/connection_database')
+
+const pool = require('../../../config/connection_database')
+
+
 
 exports.getCitas = async (req, res) => {
     try {
@@ -131,12 +134,3 @@ LIMIT 1;
 
 
 };
-
-/*id_cita,
-            id_px,
-            reason_date,
-            fecha_cita,
-            hour_cita,
-            price_cita,
-            diagnosis,
-            observation,*/

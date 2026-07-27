@@ -1,7 +1,7 @@
 class PxEntity {
   final int idPx;
   final String fullNamePx;
-  final DateTime? birthdatePx;
+  final String? birthdatePx;
   final String? sexPx;
   final String? phone;
   final String? directionPx;

@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:clinica_prodental/domain/entities/entities.dart';
 import 'package:clinica_prodental/presentation/providers/features/px/data/state/patient/citas/cita_form_state.dart';
@@ -12,7 +12,7 @@ class CitaFormNotifier extends Notifier<CitaFormState> {
   CitaFormState build() => CitaFormState();
 
   void updatePatient(PxEntity px) {
-    debugPrint(px.fullNamePx);
+ 
     state = state.copyWith(px: px);
   }
 

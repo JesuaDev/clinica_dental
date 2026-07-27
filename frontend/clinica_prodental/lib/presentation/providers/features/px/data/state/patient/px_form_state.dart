@@ -5,7 +5,7 @@ class PxFormState {
   final String? names;
   final String? lastNames;
   final String? sex;
-  final DateTime? birthday;
+  final String? birthday;
   final String? phone;
   final String? direction;
   final List<AllergyEntity>? allergySelected;
@@ -30,7 +30,7 @@ class PxFormState {
     String? names,
     String? lastNames,
     String? sex,
-    DateTime? birthday,
+    String? birthday,
     String? phone,
     String? direction,
     List<AllergyEntity>? allergySelected,

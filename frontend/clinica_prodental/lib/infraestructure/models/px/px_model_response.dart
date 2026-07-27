@@ -4,7 +4,7 @@ class PxModelResponse {
   final String? phonePx;
   final String? sexPx;
   final String? directionPx;
-  final DateTime? birthdatePx;
+  final String? birthdatePx;
   final DateTime? lastAppointmentDate;
 
   PxModelResponse({
@@ -24,9 +24,7 @@ class PxModelResponse {
         phonePx: json["phone_px"] ?? ' ',
         sexPx: json["sex_px"] as String?,
         directionPx: json["direction_px"] as String?,
-        birthdatePx: json["birthdate_px"] != null
-            ? DateTime.parse(json["birthdate_px"].toString()).toLocal()
-            : DateTime.now(),
+        birthdatePx: json["birthdate_px"] ?? ' ',
         lastAppointmentDate: json["fecha_cita"] != null
             ? DateTime.parse(json["fecha_cita"].toString()).toLocal()
             : DateTime.now(),

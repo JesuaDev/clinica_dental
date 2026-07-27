@@ -71,6 +71,7 @@ class PxNotifier extends Notifier<PxState> {
         isLoading: false,
         message: response.message,
         data: [response.data, ...state.data!],
+        px: response.data
       );
     } on ErrorEntity catch (err) {
       state = state.copyWith(isLoading: false, error: err);
@@ -104,6 +105,7 @@ class PxNotifier extends Notifier<PxState> {
         isLoading: false,
         search: response.data,
         message: response.message,
+        statusCode: response.statusCode,
       );
     } on ErrorEntity catch (err) {
       state = state.copyWith(isLoading: false, error: err);
@@ -118,4 +120,9 @@ class PxNotifier extends Notifier<PxState> {
       );
     }
   }
+  void clearPatient() {
+    state = PxState(search: []);
+    state = state.copyWith(search: []);
+  }
+
 }

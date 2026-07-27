@@ -4,8 +4,8 @@ import 'package:clinica_prodental/presentation/providers/features/px/data/state/
 class PatientDtos {
   final String names;
   final String? lastNames;
-  final String sex;
-  final DateTime birthdate;
+  final String? sex;
+  final String? birthdate;
   final String phone;
   final String? direction;
   final List<int>? allergys;
@@ -16,7 +16,7 @@ class PatientDtos {
   PatientDtos({
     required this.names,
     this.lastNames,
-    required this.sex,
+    this.sex,
     required this.birthdate,
     required this.phone,
     this.direction,
@@ -31,7 +31,7 @@ class PatientDtos {
       "name_px": names,
       "last_name_px": lastNames,
       "sex_px": sex,
-      "birthdate_px": DateFormater.parseDate(birthdate),
+      "birthdate_px": birthdate,
       "phone_px": phone,
       "direction_px": direction,
       "allergys_px": allergys,

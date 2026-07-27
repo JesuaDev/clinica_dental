@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router(); 
-const {getMedications, postMedication } = require('../../controllers/patient/medications.controller');
+const {getMedications, postMedication } = require('../../../controllers/patient/details/medications.controller');
 
 router.get('/medications', getMedications); 
  

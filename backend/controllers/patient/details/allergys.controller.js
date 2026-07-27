@@ -1,5 +1,5 @@
 
-const pool = require('../../config/connection_database')
+const pool = require('../../../config/connection_database')
 
 exports.getAllergys = async (req, res) => {
 
