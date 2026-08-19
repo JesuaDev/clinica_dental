@@ -3,9 +3,7 @@ const pool = require('../../config/connection_database')
 exports.searchPx = async (req, res) => {
     try {
         let search = req.query.search;
-
-        console.log(search)
-
+ 
         const querySearch = `SELECT
             p.id_px,
             p.full_name,
@@ -28,9 +26,6 @@ exports.searchPx = async (req, res) => {
     `;
 
         const resultSearch = await pool.query(querySearch, [`%${search}%`]);
-        
-        console.log(resultSearch.rows.length === 0 ); 
-
 
         if(resultSearch.rows.length === 0) return res.status(404).json({status:404 , message: "No hay ningún resultado"});
 

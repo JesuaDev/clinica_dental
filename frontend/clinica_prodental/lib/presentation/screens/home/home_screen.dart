@@ -1,8 +1,8 @@
 //? Modules Dart
+import 'package:flutter/material.dart';
 import 'package:clinica_prodental/domain/entities/calendar/calendar_entity.dart';
 import 'package:clinica_prodental/presentation/providers/features/reminders/infraestructure/data/reminders_providers.dart';
 import 'package:clinica_prodental/presentation/widget/reminders/upcoming_task.dart';
-import 'package:flutter/material.dart';
 
 //? Modules Terceros
 import 'package:animate_do/animate_do.dart';

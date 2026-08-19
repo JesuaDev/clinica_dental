@@ -1,42 +1,33 @@
 import 'package:clinica_prodental/domain/entities/entities.dart';
 
-class CitaState {
+class DentistState {
   final bool? isLoading;
   final ErrorEntity? error;
-  final List<CitaEntity>? citas;
-  final CitaEntity? citaUpcoming;
-  final PaginationEntity? pagination;
+  final List<DentistEntity>? search;
   final String? message;
   final int? statusCode;
-  
 
-  CitaState({
+  DentistState({
     this.isLoading = false,
     this.error,
-    this.citas = const [],
-    this.pagination,
+    this.search = const [],
     this.message,
     this.statusCode,
-    this.citaUpcoming,
   });
 
-  CitaState copyWith({
+  DentistState copyWith({
     bool? isLoading,
     ErrorEntity? error,
-    List<CitaEntity>? citas,
-    PaginationEntity? pagination,
+    List<DentistEntity>? search,
     String? message,
     int? statusCode,
-    CitaEntity? citaUpcoming,
   }) {
-    return CitaState(
+    return DentistState(
       isLoading: isLoading ?? this.isLoading,
       error: error,
-      citas: citas ?? this.citas,
-      pagination: pagination,
+      search: search ?? this.search,
       message: message,
       statusCode: statusCode,
-      citaUpcoming: citaUpcoming,
     );
   }
 }

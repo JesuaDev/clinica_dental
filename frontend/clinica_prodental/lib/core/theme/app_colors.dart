@@ -10,11 +10,24 @@ class AppColors {
     Color.fromARGB(255, 145, 140, 223),
     Color(0xFF3e3aa9),
     Color(0XFF377bc4),
+    Color(0xFFD21312)
   ];
 
   static final ThemeData lightTheme = ThemeData(
     fontFamily: 'sora-regular',
     brightness: Brightness.light,
+    switchTheme: SwitchThemeData(
+      thumbColor: WidgetStateProperty.resolveWith<Color?>((
+        Set<WidgetState> state,
+      ) {
+        if (state.contains(WidgetState.hovered) ||
+            state.contains(WidgetState.selected)) {
+          return Colors.white70;
+        }
+
+        return Colors.white;
+      }),
+    ),
 
     colorScheme: const ColorScheme(
       brightness: Brightness.light,

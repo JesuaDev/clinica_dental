@@ -40,7 +40,7 @@ exports.postPatients = async (req, res) => {
             }
         }
 
-        console.log(resultPx.rows);
+ 
 
         return res.status(201).json({ status: 201, message: "¡Paciente creado exitosamente!", data: resultPx.rows[0] });
     } catch (error) {

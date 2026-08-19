@@ -1,6 +1,7 @@
 import 'dart:math';
+import 'package:clinica_prodental/helpers/functions/date/function_hour.dart';
 import 'package:flutter/material.dart';
-//TODO ORGANIZAR LOS IMPORTS 
+//TODO ORGANIZAR LOS IMPORTS
 import 'package:clinica_prodental/presentation/widget/reminders/remindar_datasource_calendar.dart';
 import 'package:clinica_prodental/presentation/widget/reminders/upcoming_task.dart';
 import 'package:clinica_prodental/helpers/format/date/combinate_date.dart';
@@ -46,20 +47,7 @@ class _CalendarRemindersState extends ConsumerState<CalendarReminders> {
     controllerTitle = TextEditingController();
     controllerBody = TextEditingController();
     source = ReminderDataSourceCalendar([]);
-    addListHours();
-  }
-
-  void addListHours() {
-    listHours.clear();
-
-    for (int hour = 7; hour <= 21; hour++) {
-      for (int min = 0; min < 60; min += 30) {
-        String hourFormat = hour.toString().padLeft(2, '0');
-        String minFormat = min.toString().padLeft(2, '0');
-
-        listHours.add('$hourFormat:$minFormat');
-      }
-    }
+    listHours = FunctionHour.addHours();
   }
 
   /*  void resizeWindow() async {
@@ -270,8 +258,8 @@ class _CalendarRemindersState extends ConsumerState<CalendarReminders> {
                                   final DtosReminder dto = DtosReminder(
                                     titleReminder: controllerTitle.text,
                                     descriptionReminder: controllerBody.text,
-                                    dateInit: dateHourInit.toIso8601String(),
-                                    dateLimit: dateHourEnd.toIso8601String(),
+                                    dateInit: dateHourInit,
+                                    dateLimit: dateHourEnd,
                                     idUser: userProfile.user!.idUser,
                                   );
 

@@ -1,7 +1,7 @@
 import 'package:clinica_prodental/core/api/response_api.dart';
 import 'package:clinica_prodental/domain/datasources/calendar/calendar_datasource.dart';
 import 'package:clinica_prodental/domain/entities/entities.dart';
-import 'package:clinica_prodental/infraestructure/dtos/dtos_reminder.dart';
+import 'package:clinica_prodental/infraestructure/dtos/appoitment/dtos_reminder.dart';
 import 'package:clinica_prodental/infraestructure/mappers/calendar_mapper.dart';
 import 'package:clinica_prodental/infraestructure/models/calendar/calendar_model.dart';
 import 'package:dio/dio.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 
-class TextInput extends StatelessWidget {
+class TextInputForm extends StatelessWidget {
   final String hintText;
   final TextEditingController controller;
   final ValueChanged<String> onChanged;
@@ -9,7 +9,7 @@ class TextInput extends StatelessWidget {
   final dynamic icon;
   final int lines;
 
-  const TextInput({
+  const TextInputForm({
     super.key,
     required this.hintText,
     required this.controller,

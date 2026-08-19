@@ -625,7 +625,7 @@ class ContentFormDentalRecord extends StatelessWidget {
         children: [
           Text("Registro Dental", style: textLabels),
           SizedBox(height: 10),
-          TextInput(
+          TextInputForm(
             hintText: "Limpieza dental",
             controller: controllerRegister,
             onChanged: (value) {},
@@ -636,7 +636,7 @@ class ContentFormDentalRecord extends StatelessWidget {
           SizedBox(height: 20),
           Text("Descripción", style: textLabels),
           SizedBox(height: 10),
-          TextInput(
+          TextInputForm(
             hintText: "Tratamientos, observaciones, etc...",
             controller: controllerDescription,
             onChanged: (value) {},
@@ -1370,7 +1370,7 @@ class _ContentDirectionPxState extends State<ContentDirectionPx> {
         SizedBox(height: 15),
 
         isDirection
-            ? TextInput(
+            ? TextInputForm(
                 hintText: "Ingrese la dirección...",
                 controller: controllerDirection,
                 onChanged: widget.onchagedDirection,
@@ -1524,7 +1524,7 @@ class ContentPhonePx extends StatelessWidget {
           Text("Teléfono", style: textLabels),
           SizedBox(height: 10),
           SizedBox(
-            child: TextInput(
+            child: TextInputForm(
               hintText: "8872-8321",
               controller: phoneController,
               onChanged: widget.onchagedPhone,
@@ -1807,7 +1807,7 @@ class ContentInputsText extends StatelessWidget {
           children: [
             Text(labelText, style: textLabels),
             SizedBox(height: 10),
-            TextInput(
+            TextInputForm(
               hintText: hintText,
               controller: controller,
               onChanged: onChanged,

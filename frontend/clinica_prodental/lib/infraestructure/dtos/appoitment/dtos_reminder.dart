@@ -1,8 +1,8 @@
 class DtosReminder {
   final String titleReminder;
   final String descriptionReminder;
-  final String dateInit;
-  final String dateLimit;
+  final DateTime dateInit;
+  final DateTime dateLimit;
   final int idUser;
   final int? idCita;
   final int? idDentist;
@@ -21,8 +21,8 @@ class DtosReminder {
     return {
       "title_reminder": titleReminder,
       "description_reminder": descriptionReminder,
-      "date_init": dateInit,
-      "date_limit": dateLimit,
+      "date_init": dateInit.toIso8601String(),
+      "date_limit": dateLimit.toIso8601String(),
       "id_user": idUser,
       "id_cita": idCita,
       "id_dentist": idDentist,

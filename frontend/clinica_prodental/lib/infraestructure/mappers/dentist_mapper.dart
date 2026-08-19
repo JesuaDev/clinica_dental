@@ -7,11 +7,33 @@ class DentistMapper {
         idDentist: dentistResponse.idDentist,
         nameDentist: dentistResponse.nameDentist,
         lastNameDentist:
-            dentistResponse.lastName != null &&
-                dentistResponse.lastName.toString().isNotEmpty &&
-                dentistResponse.lastName != ' '
-            ? dentistResponse.lastName
+            dentistResponse.lastNameDentist != null &&
+                dentistResponse.lastNameDentist.toString().isNotEmpty &&
+                dentistResponse.lastNameDentist != ' '
+            ? dentistResponse.lastNameDentist
             : 'Uknow',
         available: dentistResponse.available,
+        phone:
+            dentistResponse.phone != null &&
+                dentistResponse.phone.toString().isNotEmpty &&
+                dentistResponse.phone != ' '
+            ? dentistResponse.phone
+            : 'Sin número de teléfono',
+        age: dentistResponse.age,
+        specialty:
+            dentistResponse.specialty != null &&
+                dentistResponse.specialty.toString().isNotEmpty &&
+                dentistResponse.specialty != ' '
+            ? dentistResponse.specialty
+            : 'Sin especialidades.',
+
+        email:
+            dentistResponse.email != null &&
+                dentistResponse.email.toString().isNotEmpty &&
+                dentistResponse.email != ' '
+            ? dentistResponse.email
+            : 'Sin correo electrónico.',
+
+        birthdate: dentistResponse.birthdate,
       );
 }

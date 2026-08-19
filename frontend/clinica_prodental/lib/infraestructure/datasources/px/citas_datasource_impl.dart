@@ -1,3 +1,4 @@
+import 'package:clinica_prodental/infraestructure/dtos/appoitment/dtos_date_appoitment.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:clinica_prodental/domain/entities/entities.dart';
@@ -66,6 +67,38 @@ class CitasDatasourceImpl extends CitasDatasource {
         statusCode: statusCode,
         message: message ?? "No hay mensaje...",
         data: citasParse,
+      );
+    } on DioException catch (e) {
+      throw ErrorEntity(
+        status: e.response?.statusCode,
+        message: e.response?.data['message'],
+        details: e.response?.data['details'] ?? 'No hay detalles del error',
+      );
+    } catch (err, stack) {
+      debugPrint("$err y $stack");
+      rethrow;
+    }
+  }
+
+  @override
+  Future<ResponseApi<CitaEntity>> postMedicalAppoitment(
+    DtosDateAppoitment dtos,
+  ) async {
+    try {
+      final response = await dio.post('/cita', data: dtos.toJson());
+
+      final String? message = response.data["message"];
+      final int? statusCode = response.statusCode;
+      final Map<String, dynamic> cita = response.data["data"];
+
+      final citaParse = CitaMapper.citaToEntity(
+        CitaModelResponse.fromJson(cita),
+      );
+
+      return ResponseApi(
+        statusCode: statusCode,
+        message: message ?? "No hay mensaje...",
+        data: citaParse,
       );
     } on DioException catch (e) {
       throw ErrorEntity(

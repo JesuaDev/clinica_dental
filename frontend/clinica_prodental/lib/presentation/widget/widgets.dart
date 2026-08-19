@@ -1,3 +1,7 @@
+export 'package:clinica_prodental/presentation/widget/shared/buttons/button_action_text.dart';
+
+export 'package:clinica_prodental/presentation/widget/shared/inputs/number_input.dart';
+export 'package:clinica_prodental/presentation/widget/shared/buttons/drop_down_hour.dart';
 export 'package:clinica_prodental/presentation/widget/shared/header/content_header_form.dart';
 export 'package:clinica_prodental/presentation/widget/shared/buttons/action_button_more.dart';
 export 'package:clinica_prodental/presentation/widget/shared/buttons/button_action.dart';
@@ -8,7 +12,7 @@ export 'package:clinica_prodental/presentation/widget/shared/header/content_head
 export 'package:clinica_prodental/presentation/widget/shared/paginations/pagination.dart';
 export 'package:clinica_prodental/presentation/widget/shared/notifications/toats.dart';
 export 'package:clinica_prodental/presentation/widget/shared/header/container_title.dart';
-export 'package:clinica_prodental/presentation/widget/shared/inputs/text_input.dart';
+export 'package:clinica_prodental/presentation/widget/shared/inputs/text_input_form.dart';
 export 'package:clinica_prodental/presentation/widget/shared/inputs/drop_down.dart';
 export 'package:clinica_prodental/presentation/widget/shared/inputs/input_search.dart';
 export 'package:clinica_prodental/presentation/widget/shared/notifications/view_dialog.dart';

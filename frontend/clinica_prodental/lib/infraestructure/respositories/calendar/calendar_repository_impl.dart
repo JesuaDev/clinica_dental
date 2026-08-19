@@ -2,7 +2,7 @@ import 'package:clinica_prodental/core/api/response_api.dart';
 import 'package:clinica_prodental/domain/entities/calendar/calendar_entity.dart';
 import 'package:clinica_prodental/domain/repositories/repositories.dart';
 import 'package:clinica_prodental/infraestructure/datasources/calendar/calendar_datasources_impl.dart';
-import 'package:clinica_prodental/infraestructure/dtos/dtos_reminder.dart';
+import 'package:clinica_prodental/infraestructure/dtos/appoitment/dtos_reminder.dart';
 
 class CalendarRepositoryImpl extends CalendarRepository {
   final CalendarDatasourcesImpl datasourceImpl;

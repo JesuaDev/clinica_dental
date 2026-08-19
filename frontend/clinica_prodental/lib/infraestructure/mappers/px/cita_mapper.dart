@@ -22,7 +22,12 @@ class CitaMapper {
         ? citaResponse.observation
         : 'No hay observación...',
     px: PxMapper.pxToEntity(citaResponse.px!),
-    status: citaResponse.status!
+    status:
+        citaResponse.status != null &&
+            citaResponse.status.toString().isNotEmpty &&
+            citaResponse.status != ' '
+        ? citaResponse.status
+        : "No existe estado en está cita."
         
   );
 }

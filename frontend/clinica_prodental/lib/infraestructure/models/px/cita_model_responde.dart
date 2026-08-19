@@ -38,10 +38,10 @@ class CitaModelResponse {
         priceCita: json['price_cita'] != null
             ? (json['price_cita'] as num).toDouble()
             : 0.0,
-        diagnosis: json['diagnosis'] as String?,
-        observation: json['observation'] as String?,
+        diagnosis: json['diagnosis'],
+        observation: json['observation'],
         px: PxModelResponse.fromJson(json['px'] ?? {}),
-        status: json['status'] ?? ""
+        status: json['status'] ?? " "
       );
 
   factory CitaModelResponse.empty() {

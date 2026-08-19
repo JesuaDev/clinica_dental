@@ -3,41 +3,50 @@ import 'package:clinica_prodental/domain/entities/entities.dart';
 class CitaFormState {
   final PxEntity? px;
   final String? reasonDate;
-  final int? idDentist;
+  final DentistEntity? dentist;
   final DateTime? fechaAppointment;
   final String? hourDate;
-  final double? price;
+  final String? price;
   final String? diagnosis;
   final String? observation;
+ 
+  final bool? isReminder; 
 
   CitaFormState({
     this.px,
     this.reasonDate,
-    this.idDentist,
     this.fechaAppointment,
     this.hourDate,
     this.price,
     this.diagnosis,
     this.observation,
+    this.dentist,
+
+    this.isReminder = false,
   });
 
   CitaFormState copyWith({
     PxEntity? px,
     String? reasonDate,
-    int? idDentist,
+    DentistEntity? dentist,
     DateTime? fechaAppointment,
     String? hourDate,
-    double? price,
+    String? price,
     String? diagnosis,
     String? observation,
+   
+    bool? isReminder
   }) {
     return CitaFormState(
       px: px ?? this.px,
       reasonDate: reasonDate ?? this.reasonDate,
-      idDentist: idDentist ?? this.idDentist,
+      dentist: dentist ?? this.dentist,
+      price: price ?? this.price,
       hourDate: hourDate ?? this.hourDate,
       diagnosis: diagnosis ?? this.diagnosis,
       observation: observation ?? this.observation,
+      fechaAppointment: fechaAppointment ?? this.fechaAppointment,
+      isReminder: isReminder ?? this.isReminder, 
     );
   }
 }

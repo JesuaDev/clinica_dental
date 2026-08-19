@@ -36,9 +36,14 @@ class DioClient {
         },
 
         onError: (error, handler) {
-          debugPrint("ERROR STATUS: ${error.response?.statusCode}");
-          debugPrint("ERROR DATA: ${error.response?.data}");
-          debugPrint("ERROR MESSAGE: ${error.message}");
+          debugPrint('========== DIO ERROR ==========');
+          debugPrint('TYPE: ${error.type}');
+          debugPrint('MESSAGE: ${error.message}');
+          debugPrint('ERROR: ${error.error}');
+          debugPrint('STATUS: ${error.response?.statusCode}');
+          debugPrint('DATA: ${error.response?.data}');
+
+          debugPrint('================================');
 
           if (error.response?.statusCode == 401) {
             final FlutterSecureStorage storage = FlutterSecureStorage();

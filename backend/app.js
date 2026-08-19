@@ -18,22 +18,28 @@ const medicationRouter = require('./routes/patient/details/medications.router');
 const diseasesRouter = require('./routes/patient/details/diseases.router'); 
 const citasRouter = require('./routes/appointments/medical_appointment.router'); 
 
+//? Rutas : Employees
+const dentistRouter = require('./routes/employees/dentist.router');
+
+
 app.use(express.json());
 app.use(cors({
   origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
 
-//? Use : User 
+//? Usar : User 
 app.use('/', userRouter);
 app.use('/', loginRouter);
 app.use('/', calendarRouter);
-//? Use : Patient
+//? Usar : Patient
 app.use('/', pxRouter);
 app.use('/', allergysRouter);
 app.use('/', medicationRouter);  
 app.use('/', diseasesRouter); 
 app.use('/', citasRouter); 
+//? Usar : Employees
+app.use('/', dentistRouter);
 
 
 app.listen(PORT, () => {
